@@ -17,4 +17,4 @@ if __name__ == "__main__":
     print("cos(x) 계산결과".center(20, '-'))
     print("math cos(x): %7f" % cos(x))
     print("테일러 근사: %.7f" % Module_2.cosine(x, N))
-
+#깃허브 연습
