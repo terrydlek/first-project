@@ -1,4 +1,4 @@
-''''#N(배열의 크기),M(숫자가 더해지는 횟수),K(연속해서 더해질 수 있는 횟수)를 공백으로 구분하여 입력받기
+#N(배열의 크기),M(숫자가 더해지는 횟수),K(연속해서 더해질 수 있는 횟수)를 공백으로 구분하여 입력받기
 N, M, K = map(int, input("N(배열의 크기),M(숫자가 더해지는 횟수),K(연속해서 더해질 수 있는 횟수)를 공백으로 구분하여 입력받기: ").split())
 data = list(map(int, input("데이터 입력받기").split()))
 
@@ -26,7 +26,7 @@ while True:
     result += second
     M -= 1
 print(result)
-'''
+
 #더 깔끔하게 푸는 방법
 N, M, K = map(int, input().split())
 data = list(map(int, input().split()))
