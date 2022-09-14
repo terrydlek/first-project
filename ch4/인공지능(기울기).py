@@ -49,7 +49,6 @@ print(gradient_descent(function_2, init_x=init_x, lr=1e-10, step_num=100)) #í•™ì
 import sys, os
 sys.path.append(os.pardir)
 import numpy as np
-from functions import softmax, cross_entropy_error
 from gradient import numerical_gradient
 
 class simpleNet:
