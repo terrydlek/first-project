@@ -1,4 +1,4 @@
-# 간단한 데이크스트라 알고리즘(시간복잡도 = O(V^2)
+# 간단한 데이크스트라 알고리즘(시간복잡도 = O(V^2))
 import sys
 input = sys.stdin.readline
 INF = int(1e9)  # 무한을 의미하는 값으로 10억을 설정

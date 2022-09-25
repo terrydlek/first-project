@@ -1,3 +1,4 @@
+# 시간 복잡도는 O(ElogV)로 간단한 데이크스트라 알고리즘보다 훨씬 빠름
 import heapq
 import sys
 input = sys.stdin.readline
