@@ -1,12 +1,2 @@
-n = int(input())
-data = list(map(int, input().split()))
-data.sort()
-
-result = 1
-
-for x in data:
-    if result < x:
-        break
-    result += x
-
-print(result)
+data = [1,2,3,4,5]
+print(data[5:])
