@@ -42,3 +42,8 @@ if summary == 0:
 else:
     print("READY")
 '''
+# 다른 코드
+'''v = input().count
+print(v)
+print((v('10')+v('01')+1)//2)
+'''
