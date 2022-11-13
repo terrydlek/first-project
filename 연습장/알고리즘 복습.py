@@ -1,3 +1,4 @@
-v = input().count
-print(v)
-print((v('10')+v('01')+1)//2)
+#K1KA5CB7
+li = ["K", "K", "A", "C", "B"]
+li.sort()
+print(li)
