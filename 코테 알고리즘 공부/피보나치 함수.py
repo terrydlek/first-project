@@ -25,9 +25,21 @@ def fibo_2(x):
   d[x] = fibo_2(x - 1) + fibo_2(x - 2)
   return d[x]
 
+def fibo_3(x):
+  num1 = 0
+  num2 = 1
+  num3 = 0
+  if x == 0:
+    num2 = 0
+  else:
+    for i in range(x - 1):
+      num3 = num2
+      num2 = num1 + num2
+      num1 = num3
+  return num2
 
 print(fibo_2(99))
-
+print(fibo_3(5))
 array = [0] * 100
 array[1] = 1
 array[2] = 1
