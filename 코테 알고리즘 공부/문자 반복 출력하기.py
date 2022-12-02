@@ -12,4 +12,9 @@ def solution(my_string, n):
     return answer
 
 
+def solution_1(my_string, n):
+    return ''.join(i*n for i in my_string)
+
+
 print(solution(my_string, n))
+print(solution_1(my_string, n))
