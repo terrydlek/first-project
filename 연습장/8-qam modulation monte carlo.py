@@ -1,3 +1,5 @@
+# 8-QAM modulation monte carlo simulation
+# 201811806 박제욱입니다. 과제 제출하겠습니다!
 from ModulationPy.ModulationPy import *
 from ModulationPy import QAMModem
 import numpy as np
