@@ -9,9 +9,10 @@ def convolution_encoder(message):
         q.append(int(i))
 
     initial_code = [0, 0]
-    answer = ""
+    answer = []
     while q:
-        answer += str((q[0] + initial_code[0] + initial_code[1]) % 2) + str((q[0] + initial_code[1]) % 2)
+        answer.append((q[0] + initial_code[0] + initial_code[1]) % 2)
+        answer.append((q[0] + initial_code[1]) % 2)
         initial_code[1] = initial_code[0]
         initial_code[0] = q[0]
         q.pop(0)
