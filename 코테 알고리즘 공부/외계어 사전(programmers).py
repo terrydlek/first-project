@@ -33,6 +33,7 @@ def solution_2(spell, dic):
 
 def solution_3(spell, dic):
     for d in dic:
+        # sorted함수를 사용하면 무조건 리스트로 반환!!!
         if sorted(d) == sorted(spell):
             return 1
     return 2

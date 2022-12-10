@@ -1,3 +1,4 @@
 s = ["q", "d", "s"]
-s = set(s)
-print(s)
+a = "dsq"
+print(sorted(s))
+print(sorted(a))
