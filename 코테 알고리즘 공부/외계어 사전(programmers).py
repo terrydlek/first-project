@@ -31,5 +31,13 @@ def solution_2(spell, dic):
     return 2
 
 
+def solution_3(spell, dic):
+    for d in dic:
+        if sorted(d) == sorted(spell):
+            return 1
+    return 2
+
+
 print(solution_1(spell, dic))
 print(solution_2(spell, dic))
+print(solution_3(spell, dic))

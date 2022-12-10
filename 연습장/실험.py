@@ -1,3 +1,3 @@
-a = "3 + 1"
-s = a.split()
+s = ["q", "d", "s"]
+s = set(s)
 print(s)
