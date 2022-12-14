@@ -3,23 +3,3 @@
 이것을 문자열을 민다고 정의한다면 문자열 A와 B가 매개변수로 주어질 때,
 A를 밀어서 B가 될 수 있다면 몇 번 밀어야 하는지 횟수를 return하고 밀어서 B가 될 수 없으면 -1을 return 하도록 solution 함수를 완성해보세요.
 '''
-a = "hello"
-print(list(a))
-
-def solution(A, B):
-    answer = 0
-    result = ""
-    right = A
-    while answer < len(A):
-        result += right[-1] + right[:-1]
-        print(result, right)
-        answer += 1
-        if result == B:
-            return answer
-            break
-        else:
-            continue
-        right = result
-        result = ""
-        print(result)
-    return -1
