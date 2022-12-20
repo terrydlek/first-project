@@ -16,5 +16,10 @@ def solution_2(n):
     return sum(list(map(int, str(n))))
 
 
+def solution_3(n):
+    return sum([int(i) for i in str(n)])
+
+
 print(solution_1(n))
 print(solution_2(n))
+print(solution_3(n))
