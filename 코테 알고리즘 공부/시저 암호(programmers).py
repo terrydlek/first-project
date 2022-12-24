@@ -3,5 +3,27 @@
 예를 들어 "AB"는 1만큼 밀면 "BC"가 되고, 3만큼 밀면 "DE"가 됩니다.
 "z"는 1만큼 밀면 "a"가 됩니다. 문자열 s와 거리 n을 입력받아 s를 n만큼 민 암호문을 만드는 함수, solution을 완성해 보세요.
 '''
-a = "a"
-print(chr(ord(a) + 1))
+s = input()
+n = int(input())
+
+
+def solution(s, n):
+    answer = ''
+    for i in s:
+        if i.isalpha():
+            if i.isupper():
+                if ord(i) + n > 90:
+                    answer += chr(ord(i) + n - 26)
+                else:
+                    answer += chr(ord(i) + n)
+            elif i.islower():
+                if ord(i) + n > 122:
+                    answer += chr(ord(i) + n - 26)
+                else:
+                    answer += chr(ord(i) + n)
+        else:
+            answer += i
+    return answer
+
+
+print(solution(s, n))
