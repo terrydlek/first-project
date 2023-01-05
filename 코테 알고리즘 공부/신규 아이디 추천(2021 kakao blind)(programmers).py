@@ -55,7 +55,7 @@ new_id에 나타날 수 있는 특수문자는 -_.~!@#$%^&*()=+[{]}:?,<>/ 로 �
 new_id = input()
 
 
-def solution(new_id):
+def solution_1(new_id):
     # 1단계
     a = list(new_id.lower())
     li = []
@@ -98,4 +98,35 @@ def solution(new_id):
     return b
 
 
-print(solution(new_id))
+def solution_2(new_id):
+    answer = ''
+    # 1
+    new_id = new_id.lower()
+    # 2
+    for c in new_id:
+        if c.isalpha() or c.isdigit() or c in ['-', '_', '.']:
+            answer += c
+    # 3
+    while '..' in answer:
+        answer = answer.replace('..', '.')
+    # 4
+    if answer[0] == '.':
+        answer = answer[1:] if len(answer) > 1 else '.'
+    if answer[-1] == '.':
+        answer = answer[:-1]
+    # 5
+    if answer == '':
+        answer = 'a'
+    # 6
+    if len(answer) > 15:
+        answer = answer[:15]
+        if answer[-1] == '.':
+            answer = answer[:-1]
+    # 7
+    while len(answer) < 3:
+        answer += answer[-1]
+    return answer
+
+
+print(solution_1(new_id))
+print(solution_2(new_id))
