@@ -49,7 +49,7 @@ terms = list(map(str, input().split()))
 privacies = list(map(str, input().split()))
 
 
-def solution(today, terms, privacies):
+def solution_1(today, terms, privacies):
     answer = []
     term = []
     oneminus = []
@@ -101,4 +101,27 @@ def solution(today, terms, privacies):
     return answer
 
 
-print(solution(today, terms, privacies))
+def solution_2(today, terms, privacies):
+    answer = []
+    termdict = {}
+
+    for term in terms:
+        t = term.split(' ')
+        termdict[t[0]] = int(t[1]) * 28
+
+    t = today.split('.')
+    d = 28 * 12 * int(t[0]) + 28 * int(t[1]) + int(t[2])
+
+    for p in range(len(privacies)):
+        pret = privacies[p].split(' ')
+        t = pret[0].split('.')
+        nd = 28 * 12 * int(t[0]) + 28 * int(t[1]) + int(t[2])
+
+        if termdict[pret[1]] + nd <= d:
+            answer.append(p + 1)
+
+    return answer
+
+
+print(solution_1(today, terms, privacies))
+print(solution_2(today, terms, privacies))
