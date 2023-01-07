@@ -1,6 +1,5 @@
-from collections import Counter
-a = "park je uk"
-b = Counter(a)
-print(b)
-b.pop("r")
-print(b)
+from collections import deque
+a = [1, 2, 3]
+a = deque(a)
+deque.pop(a)
+print(a)
