@@ -25,7 +25,7 @@ from collections import Counter
 dirs = input()
 
 
-def solution(dirs):
+def solution_1(dirs):
     answer = []
     lr = (1, 0)
     ud = (0, 1)
@@ -59,4 +59,18 @@ def solution(dirs):
     return len(co)
 
 
-print(solution(dirs))
+def solution_2(dirs):
+    s = set()
+    d = {'U': (0, 1), 'D': (0, -1), 'R': (1, 0), 'L': (-1, 0)}
+    x, y = 0, 0
+    for i in dirs:
+        nx, ny = x + d[i][0], y + d[i][1]
+        if -5 <= nx <= 5 and -5 <= ny <= 5:
+            s.add((x, y, nx, ny))
+            s.add((nx, ny, x, y))
+            x, y = nx, ny
+    return len(s)//2
+
+
+print(solution_1(dirs))
+print(solution_2(dirs))
