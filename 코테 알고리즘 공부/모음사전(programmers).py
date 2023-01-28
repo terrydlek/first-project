@@ -20,5 +20,3 @@ def solution(word):
 
 
 print(solution(word))
-
-
