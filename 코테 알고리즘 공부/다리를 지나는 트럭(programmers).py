@@ -29,14 +29,13 @@ weight = int(input())
 truck_weights = list(map(int, input().split()))
 
 
-def solution(bridge_length, weight, truck_weights):
+def solution_1(bridge_length, weight, truck_weights):
     answer = 0
     truck_queue = deque(truck_weights)
     bridge_queue = deque([])
     time_table = []
     #print(bridge_queue)
     #print(truck_queue)
-
 
     while True:
         weight_sum = 0
@@ -60,11 +59,26 @@ def solution(bridge_length, weight, truck_weights):
             if len(bridge_queue)+1 <= bridge_length and (weight_sum+truck_queue[0]) <= weight:
                 #print(len(bridge_queue)+1,weight_sum+truck_queue[0])
                 truck = truck_queue.popleft()
-                bridge_queue.append([truck,1])
+                bridge_queue.append([truck, 1])
 
         #print(bridge_queue)
         #print(truck_queue)
     return answer
 
 
-print(solution(bridge_length, weight, truck_weights))
+def solution_2(bridge_length, weight, truck_weights):
+    q = [0] * bridge_length
+    sec = 0
+    while q:
+        sec += 1
+        q.pop(0)
+        if truck_weights:
+            if sum(q)+truck_weights[0] <= weight:
+                q.append(truck_weights.pop(0))
+            else:
+                q.append(0)
+    return sec
+
+
+print(solution_1(bridge_length, weight, truck_weights))
+print(solution_2(bridge_length, weight, truck_weights))
