@@ -27,10 +27,7 @@ def solution(s, skip, index):
     for i in skip:
         alpha.remove(i)
     for i in s:
-        if alpha.index(i) + index >= len(alpha):
             answer += alpha[(alpha.index(i) + index) % len(alpha)]
-        else:
-            answer += alpha[alpha.index(i) + index]
     return answer
 
 
