@@ -12,14 +12,24 @@ numbers	return
 [6, 10, 2]	"6210"
 [3, 30, 34, 5, 9]	"9534330"
 '''
-from itertools import permutations
+numbers = list(map(int, input().split()))
+
+
 def solution(numbers):
-    answer = '0'
-    a = list(permutations(numbers))
-    for i in a:
-        num = ""
-        for j in i:
-            num += str(j)
-        if int(answer) < int(num):
-            answer = num
+    answer = ''
+    sum_ = 0
+    tmp = []
+    for number in numbers:
+        c = (str(number) * 4)[:4]
+        length = len(str(number))
+        tmp.append((c, length))
+    tmp.sort(reverse=True)
+    for (c, length) in tmp:
+        sum_ += int(c)
+        if sum_ == 0:
+            return '0'
+        answer += c[:length]
     return answer
+
+
+print(solution(numbers))
