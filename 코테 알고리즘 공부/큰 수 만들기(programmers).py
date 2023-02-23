@@ -7,62 +7,39 @@ number에서 k 개의 수를 제거했을 때 만들 수 있는 수 중 가장 �
 number는 2자리 이상, 1,000,000자리 이하인 숫자입니다.
 k는 1 이상 number의 자릿수 미만인 자연수입니다.
 '''
-def solution(number, k):
-    answer = ''
-    count = 0
+number = input()
+k = int(input())
+
+
+def solution_1(number, k):
+    stack = []
+    for num in number:
+        while stack and stack[-1] < num and k > 0:
+            k -= 1
+            stack.pop()
+        stack.append(num)
+    if k != 0:
+        stack = stack[:-k]
+    return ''.join(stack)
+
+
+# 시간초과
+def solution_2(number, k):
     number = list(number)
-    length = len(number)
+    count, start = 0, 0
     while count < k:
-        init = number[:k][0]
-
-        print("number", number)
-        print("answer", answer)
-        print("init", init)
-        print("count", count)
-        print("===================")
-        if k == 1:
-            rang = number[:k + 1]
-            for i in range(1, len(rang)):
-                if int(rang[i]) > int(init):
-                    if len(rang[:i]) + count <= k:
-                        count += len(rang[:i])
-                        for j in rang[:i]:
-                            number.remove(j)
-                        break
-                    else:
-                        for _ in range(k - count):
-                            number.remove(min(rang))
-                            count += 1
-                            if count < k:
-                                break
-                elif i == k:
-                    answer += number.pop(0)
-            if len(answer) == length - k:
-                return answer
+        if number[start] < number[start + 1]:
+            del number[start]
+            count += 1
+            start = 0
         else:
-            rang = number[:k]
-            for i in range(k):
-                if int(rang[i]) > int(init):
-                    if len(rang[:i]) + count <= k:
-                        count += len(rang[:i])
-                        for j in rang[:i]:
-                            number.remove(j)
-                        break
-                    else:
-                        for _ in range(k - count):
-                            number.remove(min(rang))
-                            count += 1
-                            if count < k:
-                                break
-                elif i == k - 1:
-                    answer += number.pop(0)
-            if len(answer) == length - k:
-                return answer
-    for i in number:
-        answer += i
-    print(number)
-    return answer
+            start += 1
+            if start == len(number) - 1:
+                for _ in range(k - count):
+                    del number[number.index(min(number))]
+                return ''.join(number)
+    return ''.join(number)
 
 
-print(solution("4321", 1))
-
+print(solution_1(number, k))
+print(solution_2(number, k))
