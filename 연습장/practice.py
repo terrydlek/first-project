@@ -1,2 +1,2 @@
-answer = [[1], [2, 3]]
-print(sum(answer, []))
+li = [1,2,3,4] + [0] * 10
+print(li)
