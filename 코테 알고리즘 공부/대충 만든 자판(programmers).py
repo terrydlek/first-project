@@ -7,7 +7,7 @@ targets = list(map(str, input().split()))
 
 def solution(keymap, targets):
     answer = []
-    dic = {i:100 for i in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"}
+    dic = {i: 100 for i in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"}
     for i in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
         for j in keymap:
             if i in j:
