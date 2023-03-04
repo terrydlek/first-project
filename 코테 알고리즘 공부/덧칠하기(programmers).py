@@ -16,7 +16,8 @@ def solution(n, m, section):
         li.append(deque.popleft(section))
         if len(li) == m or (li[-1] - li[0]) >= m:
             answer += 1
-            section.insert(0, li[-1])
+            if (li[-1] - li[0]) >= m:
+                section.insert(0, li[-1])
             li = []
         elif not section:
             answer += 1
@@ -24,4 +25,3 @@ def solution(n, m, section):
 
 
 print(solution(n, m, section))
-g
