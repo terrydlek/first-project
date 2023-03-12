@@ -1,2 +1,2 @@
-li = [1,2,3,4] + [0] * 10
-print(li)
+for i in range(5, -1, -3):
+    print(i)
