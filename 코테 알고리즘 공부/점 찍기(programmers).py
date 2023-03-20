@@ -14,15 +14,17 @@ k, d = map(int, input().split())
 
 def solution(k, d):
     answer = 0
-    for i in range(0, d + 1, k):
-        if (i**2 + i**2) <= d**2:
-            answer += i//k * 2 + 1
+    li = [i for i in range(0, d + 1, k)]
+    li.reverse()
+    print(li)
+    for i in li:
+        if (i**2) * 2 <= d**2:
+            answer += (i//k + 1) ** 2
+            return answer
         else:
-            for endx in range(0, i + 1, k):
-                if (i**2 + endx**2) <= d**2:
+            for j in range(0, i, k):
+                if (i**2 + j**2) <= d**2:
                     answer += 2
-                    print(i, endx)
+                else:
+                    break
     return answer
-
-
-print(solution(k, d))
