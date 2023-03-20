@@ -15,7 +15,7 @@ operations의 원소는 큐가 수행할 연산을 나타냅니다.
 operations = list(map(str, input().split()))
 
 
-def solution(operations):
+def solution_1(operations):
     li = []
     for i in operations:
         if "I" in i:
@@ -33,4 +33,26 @@ def solution(operations):
         return [max(li), min(li)]
 
 
-print(solution(operations))
+import heapq
+
+
+def solution_2(operations):
+    heap = []
+    for operation in operations:
+        operator, operand = operation.split(" ")
+        operand = int(operand)
+        if operator == "I":
+            heapq.heappush(heap, operand)
+        elif heap:
+            if operand < 0:
+                heapq.heappop(heap)
+            else:
+                heap.remove(max(heap))
+
+        if not heap:
+            return [0, 0]
+        return [max(heap), heap[0]]
+
+
+print(solution_1(operations))
+print(solution_2(operations))
