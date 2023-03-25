@@ -1,4 +1,4 @@
-from collections import deque
+'''from collections import deque
 
 
 def solution(maps):
@@ -38,3 +38,6 @@ def solution(maps):
 
 
 print(solution(["X591X", "X1X5X", "X231X", "1XXX1"]))
+'''
+v = [[0] * 8 for _ in range(4)]
+print(v)
