@@ -1,43 +1,31 @@
-'''from collections import deque
+from collections import deque
+import math
 
 
-def solution(maps):
-    answer = []
-    maps = [list(i) for i in maps]
-
-    def bfs(y, x):
+def solution(k, d):
+    def cal(y, x, k, d):
         q = deque()
+        visited = [["O"] * d for _ in range(d)]
         q.append((y, x))
-
+        criteria = math.pow(d, 2)
+        count = 0
         while q:
-            y, x = q.popleft()
-            if maps[y][x] == "X":
-                continue
-            day.append(int(maps[y][x]))
-            maps[y][x] = "X"
+            chy, chx = q.popleft()
+            count += 1
 
-            if y + 1 < len(maps) and maps[y + 1][x] != "X":
-                q.append((y + 1, x))
-            if y - 1 >= 0 and maps[y - 1][x] != "X":
-                q.append((y - 1, x))
-            if x + 1 < len(maps[0]) and maps[y][x + 1] != "X":
-                q.append((y, x + 1))
-            if x - 1 >= 0 and maps[y][x - 1] != "X":
-                q.append((y, x - 1))
-        return sum(day)
+            if math.pow(chy + k, 2) + math.pow(chx, 2) <= criteria and visited[chy + k][chx] != "V":
+                visited[chy + k][chx] = "V"
+                q.append((chy + k, x))
+            if math.pow(chy, 2) + math.pow(chx + k, 2) <= criteria and visited[chy][chx + k] != "V":
+                visited[chy][chx + k] = "V"
+                q.append((chy, chx + k))
+            if math.pow(chy + k, 2) + math.pow(chx + k, 2) <= criteria and visited[chy + k][chx + k] != "V":
+                visited[chy + k][chx + k] = "V"
+                q.append((chy + k, chx + k))
+        return count
 
-    for i in range(len(maps)):
-        for j in range(len(maps[0])):
-            if maps[i][j] != "X":
-                day = []
-                answer.append(bfs(i, j))
+    return cal(0, 0, k, d)
 
-    if not answer:
-        return [-1]
-    return sorted(answer)
-
-
-print(solution(["X591X", "X1X5X", "X231X", "1XXX1"]))
-'''
-v = [[0] * 8 for _ in range(4)]
-print(v)
+li = [1,2,3,4,5]
+for i,j in enumerate(li):
+    print(i, j)
