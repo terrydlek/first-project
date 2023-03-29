@@ -1,31 +1,22 @@
-from collections import deque
-import math
+def solution(begin, target, words):
+    answer = 0
+    if target not in words:
+        return 0
+
+    def dfs(bg, tg, wd, answer):
+        for i in words:
+            count = 0
+            for j in range(len(tg)):
+                if bg[j] != i[j]:
+                    count += 1
+
+            if count == 1 and i == tg:
+                return answer
+            elif count == 1:
+                print(bg, i, tg, answer, wd)
+                dfs(i, tg, wd[:wd.index(i)] + wd[wd.index(i) + 1:], answer + 1)
+
+    return dfs(begin, target, words, answer)
 
 
-def solution(k, d):
-    def cal(y, x, k, d):
-        q = deque()
-        visited = [["O"] * d for _ in range(d)]
-        q.append((y, x))
-        criteria = math.pow(d, 2)
-        count = 0
-        while q:
-            chy, chx = q.popleft()
-            count += 1
-
-            if math.pow(chy + k, 2) + math.pow(chx, 2) <= criteria and visited[chy + k][chx] != "V":
-                visited[chy + k][chx] = "V"
-                q.append((chy + k, x))
-            if math.pow(chy, 2) + math.pow(chx + k, 2) <= criteria and visited[chy][chx + k] != "V":
-                visited[chy][chx + k] = "V"
-                q.append((chy, chx + k))
-            if math.pow(chy + k, 2) + math.pow(chx + k, 2) <= criteria and visited[chy + k][chx + k] != "V":
-                visited[chy + k][chx + k] = "V"
-                q.append((chy + k, chx + k))
-        return count
-
-    return cal(0, 0, k, d)
-
-li = [1,2,3,4,5]
-for i,j in enumerate(li):
-    print(i, j)
+print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]))
