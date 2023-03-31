@@ -4,6 +4,7 @@ def solution(begin, target, words):
         return 0
 
     def dfs(bg, tg, wd, answer):
+
         for i in words:
             count = 0
             for j in range(len(tg)):

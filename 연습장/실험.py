@@ -1,27 +1,25 @@
 from collections import deque
-
-
-def solution(n=8, a=4, b=7):
-    answer = 1
-    li = deque([i for i in range(1, n + 1)])
-    while len(li) > 2:
-        for i in range(0, len(li), 2):
-            if li[0] == a and li[1] == b:
-                return answer
-            elif li[0] == b and li[1] == a:
-                return answer
-            if li[0] == a or li[1] == a:
-                li.append(a)
-            elif li[0] == b or li[1] == b:
-                li.append(b)
-            else:
-                li.append(li[0])
-            deque.popleft(li)
-            deque.popleft(li)
-        answer += 1
-        print(li, answer)
-        print("==================")
+def solution(begin, target, words):
+    answer = 0
+    if target not in words:
+        return 0
+    q = deque()
+    q.append((begin, 0))
+    while q:
+        bg, cnt = q.popleft()
+        if bg == target:
+            return cnt
+        for i in words:
+            count = 0
+            # visited = ["o"] * len(words)
+            for j in range(len(i)):
+                if bg[j] != i[j]:
+                    count += 1
+            if count == 1 and bg == target:
+                return cnt
+            elif count == 1:
+                q.append((i, cnt + 1))
     return answer
 
 
-print(solution(8, 4, 7))
+print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]))
