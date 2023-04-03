@@ -1,23 +1,19 @@
-def solution(begin, target, words):
+from collections import deque
+def solution(triangle):
     answer = 0
-    if target not in words:
-        return 0
-
-    def dfs(bg, tg, wd, answer):
-
-        for i in words:
-            count = 0
-            for j in range(len(tg)):
-                if bg[j] != i[j]:
-                    count += 1
-
-            if count == 1 and i == tg:
-                return answer
-            elif count == 1:
-                print(bg, i, tg, answer, wd)
-                dfs(i, tg, wd[:wd.index(i)] + wd[wd.index(i) + 1:], answer + 1)
-
-    return dfs(begin, target, words, answer)
+    q = deque()
+    q.append((0, 0, triangle[0][0]))
+    li = []
+    while q:
+        y, x, sm = q.popleft()
+        if y + 1 == len(triangle):
+            li.append(sm)
+            continue
+        for i in triangle[y + 1]:
+            q.append((y + 1, i, sm + i))
+    print(li)
+    return answer
 
 
-print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]))
+print(solution([[7], [3, 8]]))
+# print(solution([[7], [3, 8], [8, 1, 0], [2, 7, 4, 4], [4, 5, 2, 6, 5]]))
