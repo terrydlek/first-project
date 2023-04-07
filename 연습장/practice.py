@@ -1,19 +1,12 @@
-from collections import deque
-def solution(triangle):
-    answer = 0
-    q = deque()
-    q.append((0, 0, triangle[0][0]))
-    li = []
-    while q:
-        y, x, sm = q.popleft()
-        if y + 1 == len(triangle):
-            li.append(sm)
-            continue
-        for i in triangle[y + 1]:
-            q.append((y + 1, i, sm + i))
-    print(li)
-    return answer
+def solution(players, callings):
+    answer = []
+    for i in callings:
+        players[players.index(i)], players[players.index(i) - 1] = players[players.index(i) - 1], players[players.index(i)]
+        print(players)
+    return players
 
+players = ["mumu", "soe", "poe", "kai", "mine"]
+players[1], players[0] = players[0], players[1]
+print(players)
 
-print(solution([[7], [3, 8]]))
-# print(solution([[7], [3, 8], [8, 1, 0], [2, 7, 4, 4], [4, 5, 2, 6, 5]]))
+# print(solution(["mumu", "soe", "poe", "kai", "mine"], ["kai", "kai", "mine", "mine"]))
