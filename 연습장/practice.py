@@ -1,12 +1,33 @@
-def solution(players, callings):
+def solution(sequence, k):
     answer = []
-    for i in callings:
-        players[players.index(i)], players[players.index(i) - 1] = players[players.index(i) - 1], players[players.index(i)]
-        print(players)
-    return players
+    if k in sequence:
+        return [sequence.index(k), sequence.index(k)]
+    start, end = 0, 0
+    sm = sequence[start]
+    while True:
+        if end != len(sequence) - 1:
+            if sm == k:
+                answer.append([start, end])
+                sm -= sequence[start]
+                start += 1
+            elif sm < k:
+                end += 1
+                sm += sequence[end]
+            elif sm > k:
+                sm -= sequence[start]
+                start += 1
+        else:
+            if sm == k:
+                answer.append([start, end])
+                sm -= sequence[start]
+                start += 1
+            else:
+                sm -= sequence[start]
+                start += 1
+            if start == len(sequence) - 1:
+                break
+        print(answer, start, end, sm)
+    return answer
 
-players = ["mumu", "soe", "poe", "kai", "mine"]
-players[1], players[0] = players[0], players[1]
-print(players)
 
-# print(solution(["mumu", "soe", "poe", "kai", "mine"], ["kai", "kai", "mine", "mine"]))
+print(solution([1, 1, 1, 2, 100], 102))
