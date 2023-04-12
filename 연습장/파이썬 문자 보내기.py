@@ -1,7 +1,5 @@
 import requests
 import json
-import sys
-import os
 import hashlib
 import hmac
 import base64
@@ -13,6 +11,7 @@ access_key = "Du14E52SZ3CxQVdLs4ng"
 secret_key = "u5JcMiDHFBwn5A8inIdtdpIJcYph194d6b8uSLmm"
 url = "https://sens.apigw.ntruss.com"
 uri = "/sms/v2/services/ncp:sms:kr:306057061747:capstone/messages"
+
 
 def make_signature(secret_key, access_key, timestamp, uri):
     secret_key = bytes(secret_key, 'UTF-8')
