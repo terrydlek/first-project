@@ -25,53 +25,31 @@ diamond : 다이아몬드
 iron : 철
 stone : 돌
 '''
-'''from collections import Counter
-def solution(picks, minerals):
-    answer = 0
-    scope = Counter(minerals[:sum([i* 5  for i in picks])])
-    avail = []
-    for i in scope:
-        avail.append(i)
-    avail.sort()
-    print(avail)
-    print(scope)
-    return answer'''
+picks = list(map(int, input().split()))
+minerals = list(map(str, input().split()))
 
-from collections import deque
+
 def solution(picks, minerals):
     answer = 0
-    ax = []
-    for i in range(3):
-        for _ in range(picks[i] * 5):
-            if i == 0:
-                ax.append('diamond')
-            elif i == 1:
-                ax.append('iron')
-            elif i == 2:
-                ax.append('stone')
-    ax = deque(ax)
-    print(ax)
-    avail_mineral = deque(minerals[:len(ax)])
-    print(avail_mineral)
-    while len(ax) != 0 and len(avail_mineral) != 0:
-        a, m = ax.popleft(), avail_mineral.popleft()
-        if a == 'diamond':
-            answer += 1
-        elif a == 'iron' and m == 'diamond':
-            answer += 5
-        elif (a == 'iron' and m == 'iron') or (a == 'iron' and m == 'stone'):
-            answer += 1
-        elif a == 'stone' and m == 'diamond':
-            answer += 25
-        elif a == 'stone' and m == 'iron':
-            answer += 5
-        elif a == 'stone' and m == 'stone':
-            answer += 1
-        print(ax)
-        print(avail_mineral)
-        print(answer)
-        print("============")
+    dct = {'diamond': 0, 'iron': 1, 'stone': 2}
+    avail_min = minerals[:sum(picks) * 5]
+
+    rng = [[0, 0, 0] for _ in range((len(avail_min) - 1) // 5 + 1)]
+    for i in range(len(avail_min)):
+        rng[i // 5][dct[avail_min[i]]] += 1
+
+    rng.sort(reverse=True, key=lambda x: (x[0], x[1], x[2]))
+
+    ax = ["diamond" for _ in range(picks[0])] + ["iron" for _ in range(picks[1])] + ["stone" for _ in range(picks[2])]
+
+    for i in range(len(rng)):
+        if ax[i] == "diamond":
+            answer += sum(rng[i])
+        elif ax[i] == "iron":
+            answer += rng[i][0] * 5 + rng[i][1] + rng[i][2]
+        else:
+            answer += rng[i][0] * 25 + rng[i][1] * 5 + rng[i][2]
     return answer
 
 
-print(solution([1, 3, 2], ["diamond", "diamond", "diamond", "iron", "iron", "diamond", "iron", "stone"]))
+print(solution(picks, minerals))

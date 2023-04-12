@@ -25,11 +25,27 @@ a, b는 머쓱이가 맞춰야 할 공이 놓인 좌표를 의미합니다.
 (a, b) = ( startX, startY )인 입력은 들어오지 않습니다.
 '''
 
+
 def solution(m, n, startX, startY, balls):
     answer = []
     for i in balls:
         if i[1] == startY:
-            answer.append(min(((startX - i[0])**2 + (startY - (2 * n - i[1]))**2), (startX - i[0])**2 + (startY + i[1])**2))
+            print("one")
+            if i[0] > startX:
+                print(1)
+                answer.append(min(((startX - i[0])**2 + (startY - (2 * n - i[1]))**2), (startX - i[0])**2 + (startY + i[1])**2, (i[0] + startX)**2))
+            else:
+                print(2)
+                answer.append(min(((startX - i[0])**2 + (startY - (2 * n - i[1]))**2), (startX - i[0])**2 + (startY + i[1])**2, (m - startX + m - i[0])**2))
+        elif i[0] == startX:
+            print("two")
+            if i[1] > startY:
+                answer.append(min(((startY - i[1])**2 + (startX - (2 * n - i[0]))**2), (startY - i[1])**2 + (startX + i[0])**2, (i[1] + startY)**2))
+            else:
+                answer.append(min(((startY - i[1])**2 + (startX - (2 * n - i[0]))**2), (startY - i[1])**2 + (startX + i[0])**2, (n - startY + i[1])**2))
+        else:
+            print("three")
+            answer.append(min(((startY - i[1])**2 + (startX - (2 * n - i[0]))**2), (startY - i[1])**2 + (startX + i[0])**2, ((startX - i[0])**2 + (startY - (2 * n - i[1]))**2), (startX - i[0])**2 + (startY + i[1])**2))
     return answer
 
 
