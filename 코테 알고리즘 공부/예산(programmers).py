@@ -12,16 +12,13 @@ budget = int(input())
 
 
 def solution(d, budget):
-    answer = 0
     count = 0
     d.sort()
-    for i in d:
-        count += i
-        if count <= budget:
-            answer += 1
-        else:
-            return answer
-    return answer
+    for i, j in enumerate(d):
+        count += j
+        if count > budget:
+            return i
+    return i + 1
 
 
 print(solution(d, budget))

@@ -7,7 +7,7 @@
 number = list(map(int, input().split()))
 
 
-def solution(number):
+def solution_1(number):
     answer = 0
     for i in range(len(number)):
         for j in range(i + 1, len(number)):
@@ -17,4 +17,16 @@ def solution(number):
     return answer
 
 
-print(solution(number))
+from itertools import combinations as cb
+
+
+def solution_2(number):
+    answer = 0
+    for i in list(cb(number, 3)):
+        if sum(i) == 0:
+            answer += 1
+    return answer
+
+
+print(solution_1(number))
+print(solution_2(number))
