@@ -7,10 +7,10 @@ import time
 timestamp = int(time.time() * 1000)
 timestamp = str(timestamp)
 
-access_key =
-secret_key =
-url =
-uri =
+access_key = "Du14E52SZ3CxQVdLs4ng"
+secret_key = "u5JcMiDHFBwn5A8inIdtdpIJcYph194d6b8uSLmm"
+url = "https://sens.apigw.ntruss.com"
+uri = "/sms/v2/services/ncp:sms:kr:306057061747:capstone/messages"
 
 
 def make_signature(secret_key, access_key, timestamp, uri):
@@ -32,12 +32,12 @@ header = {
 
 data = {
     "type":"SMS",
-    "from":"",
-    "content": "hi",
+    "from":"01039061652",
+    "content": "구조 요청이 필요한 사람이 탐지되었습니다.",
     "subject":"SENS",
     "messages":[
         {
-            "to": "",
+            "to": "01089643268",
         }
     ]
 }
