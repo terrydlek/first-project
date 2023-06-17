@@ -1,11 +1,10 @@
 from itertools import permutations as pm
+expression = input()
 
 
 def solution(expression):
-    answer = 0
     re = []
     rank = list(pm(["+", "-", "*"], 3))
-    #print(list(rank))
     string = ""
     string_li = []
     for i in expression:
@@ -17,12 +16,9 @@ def solution(expression):
             string = ""
     if string:
         string_li.append(string)
-    #print(string_li)
 
     for i in rank:
         li = string_li.copy()
-        print(i)
-        print(li)
         for j in i:
             while j in li:
                 idx = li.index(j)
@@ -31,10 +27,8 @@ def solution(expression):
                 del li[idx - 1]
                 del li[idx - 1]
                 del li[idx - 1]
-                print(li)
         re.append(abs(int(li[0])))
-    print(re)
     return max(re)
 
 
-print(solution("100-200*300-500+20"))
+print(solution(expression))
