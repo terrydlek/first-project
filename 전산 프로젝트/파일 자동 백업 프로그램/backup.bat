@@ -1,0 +1,1 @@
+C:\Users\USER\AppData\Local\Programs\Python\Python39\python.exe "C:/Users/USER/PycharmProjects/pythonProject3/전산 프로젝트/파일 자동 백업 프로그램/최종 백업 알람 프로그램.py"
