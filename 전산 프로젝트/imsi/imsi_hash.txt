@@ -1,0 +1,3 @@
+MD5의 .\checkdir\HashTab_v6.0.0.34_Setup.exe 해시:
+0a401aec90a0b4f4da73b4131f24eda1
+CertUtil: -hashfile 명령이 성공적으로 완료되었습니다.
