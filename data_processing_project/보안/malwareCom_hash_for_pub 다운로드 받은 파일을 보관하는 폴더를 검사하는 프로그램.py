@@ -5,7 +5,7 @@ import win32api
 import time
 from ast import literal_eval
 
-api_key = '5D7F30B9145B41DD888A72A24C9C9A7AA671995FE0EF4F1189AAFA20179EF4E4'
+api_key = ''
 
 print(len(sys.argv))
 if len(sys.argv) > 1 and api_key:
@@ -31,7 +31,7 @@ if len(sys.argv) > 1 and api_key:
 
                 url = f"https://public.api.malwares.com/api/v22/file/analysis/{hash}"
                 headers = {
-                    "x-api-key": "5D7F30B9145B41DD888A72A24C9C9A7AA671995FE0EF4F1189AAFA20179EF4E4",
+                    "x-api-key": "",
                 }
 
                 response = requests.request("GET", url, headers=headers)
@@ -92,7 +92,7 @@ if len(sys.argv) > 1 and api_key:
 
                     url = f"https://public.api.malwares.com/api/v22/file/analysis/{hash}"
                     headers = {
-                        "x-api-key": "5D7F30B9145B41DD888A72A24C9C9A7AA671995FE0EF4F1189AAFA20179EF4E4",
+                        "x-api-key": "",
                     }
 
                     response = requests.request("GET", url, headers=headers)
